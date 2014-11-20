@@ -156,5 +156,6 @@ module.exports = function(grunt) {
             });
         };
         getSHA();
+        grunt.config.set('gitinfo', gitinfo);
     });
 };
