@@ -40,16 +40,14 @@ module.exports = function(grunt) {
                     cwd : gitinfo.options.cwd
                 }
             }, function (err, result) {
-                if (err) {
-                    done();
-                } else {
+                if (!err) {
                     gitinfo.remote = {
                         origin : {
                             url : result.stdout
                         }
                     };
-                    getCurrentBranchName();
                 }
+                getCurrentBranchName();
             });
         },
 
@@ -61,12 +59,10 @@ module.exports = function(grunt) {
                     cwd : gitinfo.options.cwd
                 }
             }, function (err, result) {
-                if (err) {
-                    done();
-                } else {
+                if (!err) {
                     gitinfo.local.branch.current.lastCommitTime = result.stdout;
-                    getRemoteOriginUrl();
                 }
+                getRemoteOriginUrl();
             });
         },
         getLastCommitAuthor = function () {
@@ -77,12 +73,10 @@ module.exports = function(grunt) {
                     cwd : gitinfo.options.cwd
                 }
             }, function (err, result) {
-                if (err) {
-                    done();
-                } else {
+                if (!err) {
                     gitinfo.local.branch.current.lastCommitAuthor = result.stdout;
-                    getCurrentUser();
                 }
+                getCurrentUser();
             });
         },
         getCurrentUser = function () {
@@ -93,12 +87,10 @@ module.exports = function(grunt) {
                     cwd : gitinfo.options.cwd
                 }
             }, function (err, result) {
-                if (err) {
-                    done();
-                } else {
+                if (!err) {
                     gitinfo.local.branch.current.currentUser = result.stdout;
-                    getLastCommitTime();
                 }
+                getLastCommitTime();
             });
         },
         getShortSHA = function () {
@@ -141,9 +133,7 @@ module.exports = function(grunt) {
                     cwd : gitinfo.options.cwd
                 }
             }, function (err, result) {
-                if (err) {
-                    done();
-                } else {
+                if (!err) {
                     gitinfo.local = {
                        branch : {
                            current : {
